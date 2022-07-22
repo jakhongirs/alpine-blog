@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Article, Tag
+from common.serializer import UserSerializer
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -9,6 +10,7 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class ArticleSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     tags = TagSerializer(many=True)
 
     class Meta:
