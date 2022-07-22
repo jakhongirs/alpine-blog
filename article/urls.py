@@ -7,4 +7,5 @@ urlpatterns = [
     path('articles/popular/', views.IsPopularArticlesView.as_view(), name="is_popular"),
     path('articles/foryou/', views.IsForYouArticlesView.as_view(), name="is_foryou"),
     path('article/<int:id>/', views.ArticleDetailView.as_view()),
+    path('article/<int:article_id>/comments/', views.ArticleCommentsView.as_view()),
 ]

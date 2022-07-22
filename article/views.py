@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Article
-from .serializer import ArticleSerializer
+from .models import Article, Comment
+from .serializer import ArticleSerializer, CommentSerializer
 from rest_framework import generics
 from helpers.pagination import CustomPagination, PageFive, PageThree
 
@@ -45,5 +45,19 @@ class ArticleDetailView(generics.ListAPIView):
         queryset = self.queryset
         if self.kwargs.get('id', None):
             queryset = queryset.filter(id=self.kwargs['id'])
+
+        return queryset
+
+
+# ARTICLE COMMENTS:
+class ArticleCommentsView(generics.ListAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        queryset = self.queryset
+        if self.kwargs.get('article_id', None):
+            queryset = queryset.filter(id=self.kwargs['article_id'])
 
         return queryset

@@ -10,3 +10,4 @@ api/v1/swagger/schema/ - swagger
 
 /article/<int:id>/ - article detail
 
+article/<int:article_id>/comments/ - all comments of article
