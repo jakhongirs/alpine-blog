@@ -9,6 +9,8 @@ class User(AbstractUser):
     INVALID_CODE = "######"
 
     full_name = models.CharField(_("full name"), max_length=256)
+    avatar = models.ImageField(upload_to="user/", null=True, blank=True)
+    followers = models.ManyToManyField('self', symmetrical=False, null=True, blank=True)
 
     created_at = models.DateTimeField(_("date created"), auto_now_add=True, null=True)
     updated_at = models.DateTimeField(_("date updated"), auto_now=True)
