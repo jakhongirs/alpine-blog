@@ -1,1 +1,1 @@
-/posts
+/api/v1/articles/ - all articles
